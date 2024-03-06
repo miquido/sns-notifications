@@ -7,6 +7,8 @@ include:
 doit:
   stage: .pre
   image: alpine:latest
+  before_script:
+    - apt add make
   script:
     - make init
     - make readme
