@@ -6,9 +6,7 @@ include:
 
 doit:
   stage: .pre
-  image: alpine:latest
-  before_script:
-    - apk add make
+  image: ubuntu:latest
   script:
     - make init
     - make readme
