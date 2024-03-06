@@ -10,6 +10,7 @@ doit:
   before_script:
     - apt update
     - apt install make
+    - apt install curl -y
   script:
     - make init
     - make readme
