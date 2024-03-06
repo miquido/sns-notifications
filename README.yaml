@@ -1,0 +1,21 @@
+name: sns-notifications
+repos:
+  gitlab: miquido/terraform/sns-notifications
+badges: [ ]
+related: [ ]
+description: |-
+  Provides SNS queue that sends messages for provided webhooks
+usage: |-
+
+  ```hcl
+    module "this" {
+      source      = "git::https://github.com/miquido/sns-notifications"
+      environment = "test"
+      project     = "project"
+      webhooks    = ["https://webhook.example.com"]
+    }
+  ```
+
+include:
+  - "docs/targets.md"
+  - "docs/terraform.md"
