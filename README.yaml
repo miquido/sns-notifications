@@ -19,3 +19,5 @@ usage: |-
 include:
   - "docs/targets.md"
   - "docs/terraform.md"
+
+github_repo: cloudposse/build-harness
