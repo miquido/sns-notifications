@@ -15,9 +15,6 @@ validate:
   variables:
     ENVIRONMENTS: examples/complete
 
-miquido-ci-schema-validation:
-  extends: .miquido-ci-schema-validation
-
 bump-tag:
   extends: .bump_minor_tag
 
