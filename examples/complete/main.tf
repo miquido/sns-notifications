@@ -1,6 +1,6 @@
 module "this" {
-  source = "../../"
+  source      = "../../"
   environment = ""
-  project = ""
-  webhooks = [""]
+  project     = ""
+  webhooks    = [""]
 }
