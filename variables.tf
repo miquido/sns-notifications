@@ -13,7 +13,7 @@ variable "project" {
 }
 
 variable "log_retention" {
-  type = number
+  type    = number
   default = 7
 }
 

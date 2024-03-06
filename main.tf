@@ -9,7 +9,7 @@ locals {
 
 data "archive_file" "notification" {
   type             = "zip"
-  source_dir      = "${path.module}/python_code"
+  source_dir       = "${path.module}/python_code"
   output_path      = local.notification_lambda_zip_filename
   output_file_mode = "0755"
 }
