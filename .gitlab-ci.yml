@@ -11,6 +11,7 @@ doit:
     - apt update
     - apt install make
     - apt install curl -y
+    - apt install git -y
   script:
     - make init
     - make readme
