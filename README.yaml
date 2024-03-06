@@ -21,3 +21,6 @@ include:
   - "docs/terraform.md"
 
 github_repo: cloudposse/build-harness
+
+# License of this project
+license: "APACHE2"
