@@ -4,20 +4,7 @@ include:
   - remote: "https://raw.githubusercontent.com/miquido/gitlab-templates/1.3.88/git-toolkit.yml"
   - remote: "https://raw.githubusercontent.com/miquido/gitlab-templates/1.3.88/gitlab-toolkit.yml"
 
-doit:
-  stage: .pre
-  image: ubuntu:latest
-  before_script:
-    - apt update
-    - apt install make
-    - apt install curl -y
-    - apt install git -y
-  script:
-    - make init
-    - make readme
-  tags:
-      - miquido
-      - docker
+
 
 get-latest-terraform:
   extends: .get-latest-terraform
@@ -34,8 +21,24 @@ bump-tag:
   extends: .bump_minor_tag
 
 docs:
-  extends: .generate_readme
-  stage: .post
+  stage: .pre
+  image: ubuntu:latest
+  before_script:
+    - apt update
+    - apt install make
+    - apt install curl -y
+    - apt install git -y
+  script:
+    - make init
+    - make readme
+  artifacts:
+    paths:
+      - README.md
+  rules:
+    - if: $CI_COMMIT_BRANCH
+  tags:
+      - miquido
+      - docker
 
 push_readme:
   extends: .push_readme
