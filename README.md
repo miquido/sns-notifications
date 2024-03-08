@@ -113,7 +113,7 @@ Check out these related projects.
 <br/>
 <br/>
 
-
+Complete license is available in the [`LICENSE`](LICENSE) file.
 
 ```text
 Licensed to the Apache Software Foundation (ASF) under one
