@@ -21,7 +21,7 @@ bump-tag:
   extends: .bump_minor_tag
 
 docs:
-  stage: .pre
+  stage: .post
   image: ubuntu:latest
   before_script:
     - apt update
