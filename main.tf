@@ -1,5 +1,12 @@
+data aws_caller_identity default {}
+
 resource "aws_sns_topic" "main" {
-  name = "${var.project}-${var.environment}-notifications"
+  name   = "${var.project}-${var.environment}-notifications"
+}
+
+resource "aws_sns_topic_policy" "alarm" {
+  arn    = aws_sns_topic.main.arn
+  policy = data.aws_iam_policy_document.sns_topic_policy.json
 }
 
 locals {
@@ -121,4 +128,65 @@ resource "aws_ssm_parameter" "webhooks" {
   name  = "/${var.project}/${var.environment}/webhooks/${count.index}"
   type  = "SecureString"
   value = var.webhooks[count.index]
+}
+
+data "aws_iam_policy_document" "sns_topic_policy" {
+  statement {
+    actions = [
+      "SNS:Subscribe",
+      "SNS:SetTopicAttributes",
+      "SNS:RemovePermission",
+      "SNS:Receive",
+      "SNS:Publish",
+      "SNS:ListSubscriptionsByTopic",
+      "SNS:GetTopicAttributes",
+      "SNS:DeleteTopic",
+      "SNS:AddPermission",
+    ]
+
+    effect    = "Allow"
+    resources = [
+      aws_sns_topic.main.arn
+    ]
+
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "AWS:SourceOwner"
+
+      values = [
+        data.aws_caller_identity.default.account_id
+      ]
+    }
+  }
+
+  statement {
+    sid       = "Allow CloudwatchEvents"
+    actions   = ["sns:Publish"]
+    resources = [
+      aws_sns_topic.main.arn
+    ]
+
+    principals {
+      type        = "Service"
+      identifiers = ["events.amazonaws.com"]
+    }
+  }
+
+  statement {
+    sid       = "Allow RDS Event Notification"
+    actions   = ["sns:Publish"]
+    resources = [
+      aws_sns_topic.main.arn
+    ]
+
+    principals {
+      type        = "Service"
+      identifiers = ["rds.amazonaws.com"]
+    }
+  }
 }
