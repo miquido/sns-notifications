@@ -106,18 +106,7 @@ Check out these related projects.
 
 ## License
 
-<<<<<<< Updated upstream
-<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge" alt="License"></a>
-
-<details>
-<summary>Preamble to the Apache License, Version 2.0</summary>
-<br/>
-<br/>
-
-Complete license is available in the [`LICENSE`](LICENSE) file.
-=======
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge" alt="License: MIT"></a>
->>>>>>> Stashed changes
 
 ```text
 The MIT License (MIT)
