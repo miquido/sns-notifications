@@ -1,5 +1,5 @@
 <!-- markdownlint-disable -->
-# sns-notifications <a href="https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=miquido/build-harness&utm_content="><img align="right" src="https://cloudposse.com/logo-300x69.svg" width="150" /></a>
+# sns-notifications <a href="https://miquido.com?utm_source=github&utm_medium=readme&utm_campaign=miquido/build-harness&utm_content="><img align="right" src="https://cdn.miquido.dev/miquido-logo.png" width="150" /></a>
 
 <!-- markdownlint-restore -->
 
