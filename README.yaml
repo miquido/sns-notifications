@@ -17,10 +17,9 @@ usage: |-
   ```
 
 include:
-  - "docs/targets.md"
   - "docs/terraform.md"
 
-github_repo: cloudposse/build-harness
+github_repo: miquido/build-harness
 
 # License of this project
 license: "APACHE2"

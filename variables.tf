@@ -15,8 +15,11 @@ variable "project" {
 variable "log_retention" {
   type    = number
   default = 7
+  description = "How long to keep logs"
 }
 
 variable "webhooks" {
   type = list(string)
+  description = "List of webhooks to call when SNS message is received"
+  default = []
 }
