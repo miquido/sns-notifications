@@ -22,4 +22,4 @@ include:
 github_repo: miquido/build-harness
 
 # License of this project
-license: "APACHE2"
+license: "MIT"
