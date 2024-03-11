@@ -1,7 +1,7 @@
-data aws_caller_identity default {}
+data "aws_caller_identity" "default" {}
 
 resource "aws_sns_topic" "main" {
-  name   = "${var.project}-${var.environment}-notifications"
+  name = "${var.project}-${var.environment}-notifications"
 }
 
 resource "aws_sns_topic_policy" "alarm" {
@@ -144,7 +144,7 @@ data "aws_iam_policy_document" "sns_topic_policy" {
       "SNS:AddPermission",
     ]
 
-    effect    = "Allow"
+    effect = "Allow"
     resources = [
       aws_sns_topic.main.arn
     ]
@@ -165,8 +165,8 @@ data "aws_iam_policy_document" "sns_topic_policy" {
   }
 
   statement {
-    sid       = "Allow CloudwatchEvents"
-    actions   = ["sns:Publish"]
+    sid     = "Allow CloudwatchEvents"
+    actions = ["sns:Publish"]
     resources = [
       aws_sns_topic.main.arn
     ]
@@ -178,8 +178,8 @@ data "aws_iam_policy_document" "sns_topic_policy" {
   }
 
   statement {
-    sid       = "Allow RDS Event Notification"
-    actions   = ["sns:Publish"]
+    sid     = "Allow RDS Event Notification"
+    actions = ["sns:Publish"]
     resources = [
       aws_sns_topic.main.arn
     ]
