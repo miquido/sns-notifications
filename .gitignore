@@ -1,2 +1,3 @@
 *build-harness
 *__pycache__
+/examples/complete/.terraform/

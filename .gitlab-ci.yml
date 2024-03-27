@@ -17,6 +17,23 @@ validate:
   variables:
     ENVIRONMENTS: examples/complete
 
+terratest:
+  image: golang
+  before_script:
+    - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    - apt update
+    - apt install zip -y
+    - unzip awscliv2.zip
+    - ./aws/install
+  script:
+    - cd tests
+    - go mod init test
+    - go mod tidy
+    - go test my_test.go
+  tags:
+    - miquido
+    - docker
+
 bump-tag:
   extends: .bump_minor_tag
 
