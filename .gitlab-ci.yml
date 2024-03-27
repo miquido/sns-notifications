@@ -21,9 +21,12 @@ terratest:
   image: golang
   before_script:
     - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    - curl https://releases.hashicorp.com/terraform/1.7.5/terraform_1.7.5_linux_amd64.zip -o terraform_1.7.5_linux_amd64.zip
     - apt update
     - apt install zip -y
     - unzip awscliv2.zip
+    - unzip terraform_1.7.5_linux_amd64.zip
+    - mv terraform /usr/local/bin/
     - ./aws/install
   script:
     - cd tests
