@@ -27,7 +27,6 @@ terratest:
     - ./aws/install
   script:
     - cd tests
-    - go mod init test
     - go mod tidy
     - go test my_test.go
   tags:
