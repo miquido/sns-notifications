@@ -12,3 +12,7 @@ module "this" {
   project     = var.project
   webhooks    = var.webhooks
 }
+
+output "sns_arn" {
+  value = module.this.sns_arn
+}
