@@ -1,14 +1,14 @@
 variable "environment" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "project" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "webhooks" {
-  type = list(string)
+  type    = list(string)
   default = ["http://example.com/webhook"]
 }

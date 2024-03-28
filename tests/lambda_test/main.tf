@@ -37,7 +37,7 @@ resource "aws_lambda_function" "test" {
 
   depends_on = [
     aws_iam_role.test,
-#    aws_cloudwatch_log_group.test
+    #    aws_cloudwatch_log_group.test
   ]
   environment {
     variables = {
@@ -60,7 +60,7 @@ resource "aws_iam_role" "test" {
   name               = "${local.test_lambda_name}-role"
   description        = "Role used for lambda function ${local.test_lambda_name}"
   assume_role_policy = data.aws_iam_policy_document.assume_role_test.json
-#  tags               = var.tags
+  #  tags               = var.tags
 }
 
 resource "aws_iam_role_policy" "test" {
@@ -82,16 +82,16 @@ data "aws_iam_policy_document" "assume_role_test" {
 }
 
 data "aws_iam_policy_document" "role_test" {
-#  statement {
-#    actions = [
-#      "logs:CreateLogStream",
-#      "logs:PutLogEvents"
-#    ]
-#
-#    resources = [
-#      "${aws_cloudwatch_log_group.test.arn}*"
-#    ]
-#  }
+  #  statement {
+  #    actions = [
+  #      "logs:CreateLogStream",
+  #      "logs:PutLogEvents"
+  #    ]
+  #
+  #    resources = [
+  #      "${aws_cloudwatch_log_group.test.arn}*"
+  #    ]
+  #  }
   statement {
     actions = [
       "ssm:PutParameter"
@@ -109,8 +109,8 @@ resource "aws_lambda_function_url" "function" {
 }
 
 resource "aws_ssm_parameter" "test_result_param" {
-  name = local.test_lambda_name
-  type = "String"
+  name  = local.test_lambda_name
+  type  = "String"
   value = "NONE"
 }
 
