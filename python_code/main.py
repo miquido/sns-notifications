@@ -21,7 +21,6 @@ def lambda_handler(event, context):
             try:
                 sns_object = json.loads(message)
                 requests.post(webhook, json={'text': f'- Alarm: {sns_object["AlarmName"]}\n- Account: {sns_object["AWSAccountId"]}\n- Description: {sns_object["AlarmDescription"]}'})
-                print('')
             except json.decoder.JSONDecodeError:
                 requests.post(webhook, json={'text': message})
 
