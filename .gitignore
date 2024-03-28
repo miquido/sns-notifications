@@ -1,2 +1,4 @@
 *build-harness
 *__pycache__
+/examples/complete/.terraform/
+/tests/lambda_test/.terraform/

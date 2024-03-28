@@ -98,14 +98,6 @@ data "aws_iam_policy_document" "role_notification" {
     resources = aws_ssm_parameter.webhooks.*.arn
 
   }
-  statement {
-    actions = [
-      "kms:Decrypt"
-    ]
-
-    resources = ["arn:aws:kms:eu-central-1:246402711611:key/bc1169d3-442a-4aa3-b091-e16bea5afb22"]
-
-  }
 
 }
 
