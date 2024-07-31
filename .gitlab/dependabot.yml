@@ -1,0 +1,13 @@
+version: 2
+updates:
+
+  - package-ecosystem: "terraform"
+    directory: "/"
+    assignees:
+      - "marek.moscichowski1"
+      - "krzysztof.kluska"
+      - "dawid.orzel"
+    schedule:
+      interval: "daily"
+    auto-merge: true
+    open-pull-requests-limit: -1
