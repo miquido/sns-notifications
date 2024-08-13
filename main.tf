@@ -1,4 +1,5 @@
 data "aws_caller_identity" "default" {}
+data "aws_region" "default" {}
 
 resource "aws_sns_topic" "main" {
   name = "${var.project}-${var.environment}-notifications"
@@ -55,7 +56,7 @@ resource "aws_cloudwatch_log_group" "notification" {
 ################################################
 
 resource "aws_iam_role" "notification" {
-  name               = "${local.notification_lambda_name}-role"
+  name               = "${local.notification_lambda_name}-${data.aws_region.default.id}"
   description        = "Role used for lambda function ${local.notification_lambda_name}"
   assume_role_policy = data.aws_iam_policy_document.assume_role_notification.json
   tags               = var.tags
