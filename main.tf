@@ -27,7 +27,7 @@ resource "aws_lambda_function" "notification" {
   role             = aws_iam_role.notification.arn
   filename         = local.notification_lambda_zip_filename
   handler          = "main.lambda_handler"
-  runtime          = "python3.9"
+  runtime          = "python3.13"
   timeout          = 3
   memory_size      = 128
   tags             = var.tags
