@@ -182,4 +182,17 @@ data "aws_iam_policy_document" "sns_topic_policy" {
       identifiers = ["rds.amazonaws.com"]
     }
   }
+
+  statement {
+    sid     = "Allow Budgets Event Notification"
+    actions = ["sns:Publish"]
+    resources = [
+      aws_sns_topic.main.arn
+    ]
+
+    principals {
+      type        = "Service"
+      identifiers = ["budgets.amazonaws.com"]
+    }
+  }
 }
