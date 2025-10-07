@@ -3,5 +3,5 @@ module "default_formatter" {
 
   environment = var.environment
   project     = var.project
-  formatters = var.default_message_formatters
+  formatters  = var.default_message_formatters
 }

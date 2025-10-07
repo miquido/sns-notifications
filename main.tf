@@ -39,8 +39,8 @@ resource "aws_lambda_function" "notification" {
   ]
   environment {
     variables = {
-      WEBHOOKS = join(",", aws_ssm_parameter.webhooks.*.arn)
-      FORMATTER_LAMBDAS = join(",", concat(var.additional_message_formatter_lambdas, [module.default_formatter.formatter_lambda_arn]) )
+      WEBHOOKS          = join(",", aws_ssm_parameter.webhooks.*.arn)
+      FORMATTER_LAMBDAS = join(",", concat(var.additional_message_formatter_lambdas, [module.default_formatter.formatter_lambda_arn]))
     }
   }
 }
