@@ -5,11 +5,14 @@ import os
 
 import requests
 
-client = boto3.client('ssm')
-webhooks_arns = os.getenv('WEBHOOKS', []).split(',')
+ssm_client = boto3.client('ssm')
+lambda_client = boto3.client('lambda')
+
+webhooks_arns = os.getenv('WEBHOOKS').split(',')
+formatter_lambdas = os.getenv('FORMATTER_LAMBDAS', '').split(',')
 webhooks = []
 for webhook_arn in webhooks_arns:
-    param = client.get_parameter(Name=webhook_arn, WithDecryption=True)
+    param = ssm_client.get_parameter(Name=webhook_arn, WithDecryption=True)
     webhooks.append(param['Parameter']['Value'])
 
 
@@ -18,10 +21,23 @@ def lambda_handler(event, context):
     messages = list(map(lambda x: x['Sns']['Message'], event['Records']))
     for webhook in webhooks:
         for message in messages:
-            try:
-                sns_object = json.loads(message)
-                requests.post(webhook, json={'text': f'- Alarm: {sns_object["AlarmName"]}\n- Account: {sns_object["AWSAccountId"]}\n- Description: {sns_object["AlarmDescription"]}'})
-            except (json.decoder.JSONDecodeError, KeyError):
+            formatted = False
+            for formatter in formatter_lambdas:
+                response = lambda_client.invoke(
+                    FunctionName=formatter,
+                    InvocationType='RequestResponse',
+                    Payload=json.dumps({'message': message})
+                )
+                result_payload = json.load(response['Payload'])
+                if result_payload['ignore']:
+                    return
+                if result_payload['formatted']:
+                    requests.post(webhook, json={
+                        'text': result_payload['message']})
+                    formatted = True
+                    break
+
+            if not formatted:
                 requests.post(webhook, json={'text': message})
 
 

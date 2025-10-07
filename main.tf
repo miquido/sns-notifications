@@ -40,6 +40,7 @@ resource "aws_lambda_function" "notification" {
   environment {
     variables = {
       WEBHOOKS = join(",", aws_ssm_parameter.webhooks.*.arn)
+      FORMATTER_LAMBDAS = join(",", concat(var.additional_message_formatter_lambdas, [module.default_formatter.formatter_lambda_arn]) )
     }
   }
 }
@@ -97,6 +98,14 @@ data "aws_iam_policy_document" "role_notification" {
     ]
 
     resources = aws_ssm_parameter.webhooks.*.arn
+
+  }
+  statement {
+    actions = [
+      "lambda:InvokeFunction"
+    ]
+
+    resources = [module.default_formatter.formatter_lambda_arn]
 
   }
 

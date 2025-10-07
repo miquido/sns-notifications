@@ -23,3 +23,15 @@ variable "webhooks" {
   description = "List of webhooks to call when SNS message is received"
   default     = []
 }
+
+variable "default_message_formatters" {
+    type        = list(string)
+    description = "List of included default message formatters"
+    default     = null
+}
+
+variable "additional_message_formatter_lambdas" {
+    type        = list(string)
+    description = "List of additional AWS Lambdas to format the message"
+    default     = []
+}
