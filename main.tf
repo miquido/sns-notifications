@@ -105,7 +105,9 @@ data "aws_iam_policy_document" "role_notification" {
       "lambda:InvokeFunction"
     ]
 
-    resources = [module.default_formatter.formatter_lambda_arn]
+    resources = concat([
+      module.default_formatter.formatter_lambda_arn
+    ], var.additional_message_formatter_lambdas)
 
   }
 
