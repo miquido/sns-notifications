@@ -2,3 +2,7 @@
 *__pycache__
 /examples/complete/.terraform/
 /tests/lambda_test/.terraform/
+.terraform
+*.tfstate
+*.tfstate.backup
+*.zip
