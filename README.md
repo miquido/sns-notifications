@@ -39,14 +39,14 @@ module "sns_notifications" {
 
 | Name | Version |
 | ---- | ------- |
-| <a name="provider_archive"></a> [archive](#provider\_archive) | n/a |
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.0.0 |
+| <a name="provider_archive"></a> [archive](#provider\_archive) | 2.8.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 6.60.0 |
 
 ## Modules
 
 | Name | Source | Version |
 | ---- | ------ | ------- |
-| <a name="module_default_formatter"></a> [default\_formatter](#module\_default\_formatter) | git::https://github.com/miquido/terraform-default-sns-formatter.git | tags/1.0.5 |
+| <a name="module_default_formatter"></a> [default\_formatter](#module\_default\_formatter) | git::https://github.com/miquido/terraform-default-sns-formatter.git | tags/v1.1.0 |
 
 ## Resources
 
