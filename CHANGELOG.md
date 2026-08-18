@@ -1,3 +1,15 @@
+# [1.1.0](https://gitlab.miquido.com/miquido/terraform/sns-notifications/compare/v1.0.0...v1.1.0) (2026-08-18)
+
+
+### Bug Fixes
+
+* missing tf.lock ([bb8a8ad](https://gitlab.miquido.com/miquido/terraform/sns-notifications/commit/bb8a8ad60755f1c2dcf6bf2aefa35ef97e04cd3c))
+
+
+### Features
+
+* bump default formatter version ([a8b4555](https://gitlab.miquido.com/miquido/terraform/sns-notifications/commit/a8b4555b3c25cc2272dea120cccafd3467aed314))
+
 # 1.0.0 (2026-06-24)
 
 
